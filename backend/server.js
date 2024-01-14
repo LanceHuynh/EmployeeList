@@ -29,20 +29,13 @@ app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
 console.log('name below here');
 console.log(__dirname);
 console.log('name above here');
+
 console.log('API Routes');
 app.use('/employees', employeeRoutes);
+
 console.log('Catch-all route');
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, '..', 'frontend', 'build', 'index.html'));
 });
 
-// Error Handling Middleware
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send('Something went wrong!');
-});
-
-app.listen(PORT, () => {
-  console.log(`Server is running on port: ${PORT}`);
-  console.log(uri)
-});
+console.log('Server is running on port: ' + PORT);

@@ -24,14 +24,14 @@ connection.once('open', () => {
 
 // Route setup
 
+console.log('Middleware before routes');
 app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
-
+console.log('API Routes');
 app.use('/employees', employeeRoutes);
-
+console.log('Catch-all route');
 app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, '..', 'frontend', 'build', 'index.html'));
 });
-
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {

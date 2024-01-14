@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+const URL = process.env.URL || 'http://localhost:5000/';
+
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const [newEmployee, setNewEmployee] = useState({
@@ -15,7 +17,7 @@ const EmployeeList = () => {
   }, []);
 
   const fetchEmployees = () => {
-    axios.get('http://localhost:5000/employees/').then((response) => {
+    axios.get(URL+'employees/').then((response) => {
       setEmployees(response.data);
     });
   };
@@ -29,7 +31,7 @@ const EmployeeList = () => {
   };
 
   const handleAddEmployee = () => {
-    axios.post('http://localhost:5000/employees/add', newEmployee).then(() => {
+    axios.post(URL+'employees/add', newEmployee).then(() => {
       fetchEmployees();
       setNewEmployee({
         name: '',
@@ -41,7 +43,7 @@ const EmployeeList = () => {
   };
 
   const handleDeleteEmployee = (id) => {
-    axios.delete(`http://localhost:5000/employees/${id}`).then(() => {
+    axios.delete(`${URL}employees/${id}`).then(() => {
       fetchEmployees();
     });
   };

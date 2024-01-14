@@ -25,12 +25,11 @@ connection.once('open', () => {
 // Route setup
 
 
-app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
 
 app.use('/employees', employeeRoutes);
 
-app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, '..', 'frontend', 'build', 'index.html'));
+app.get('/', function (req, res) {
+  res.send("Backend server is running.");
 });
 
 // Error Handling Middleware

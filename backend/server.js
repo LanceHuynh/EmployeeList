@@ -23,7 +23,14 @@ connection.once('open', () => {
 
 // Route setup
 
+app.use(express.static(path.join(__dirname, 'build')));
+
 app.use('/employees', employeeRoutes);
+
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
+
 
 // Error Handling Middleware
 app.use((err, req, res, next) => {

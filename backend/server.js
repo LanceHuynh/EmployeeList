@@ -5,6 +5,7 @@ const uri = require('./database.js')
 const employeeRoutes = require('./routes/employee.route.js');
 
 const app = express();
+const path = require('path');
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());

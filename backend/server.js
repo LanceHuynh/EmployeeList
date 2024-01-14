@@ -24,8 +24,6 @@ connection.once('open', () => {
 
 // Route setup
 
-
-
 app.use('/employees', employeeRoutes);
 
 app.get('/', function (req, res) {

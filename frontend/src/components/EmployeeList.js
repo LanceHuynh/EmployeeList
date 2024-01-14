@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+const apiEndPoint = require('../api/Key')
 
-const URL = process.env.URL || 'http://localhost:5000/';
-
-const EmployeeList = () => {
+const EmployeeList = ({remote}) => {
+   remote ? apiEndPoint : 'http://localhost:5000/';
   const [employees, setEmployees] = useState([]);
   const [newEmployee, setNewEmployee] = useState({
     name: '',
@@ -17,7 +17,7 @@ const EmployeeList = () => {
   }, []);
 
   const fetchEmployees = () => {
-    axios.get(URL+'employees/').then((response) => {
+    axios.get(apiEndPoint+'employees/').then((response) => {
       setEmployees(response.data);
     });
   };
@@ -31,7 +31,7 @@ const EmployeeList = () => {
   };
 
   const handleAddEmployee = () => {
-    axios.post(URL+'employees/add', newEmployee).then(() => {
+    axios.post(apiEndPoint+'employees/add', newEmployee).then(() => {
       fetchEmployees();
       setNewEmployee({
         name: '',
@@ -43,7 +43,7 @@ const EmployeeList = () => {
   };
 
   const handleDeleteEmployee = (id) => {
-    axios.delete(`${URL}employees/${id}`).then(() => {
+    axios.delete(`${apiEndPoint}employees/${id}`).then(() => {
       fetchEmployees();
     });
   };

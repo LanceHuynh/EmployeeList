@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-const apiEndPoint = require('../api/Key')
+const remoteEndPoint = require('../api/Key')
 
 const EmployeeList = ({remote}) => {
-   remote ? apiEndPoint : 'http://localhost:5000/';
+  apiEndPoint = remote ? remoteEndPoint : 'http://localhost:5000/';
   const [employees, setEmployees] = useState([]);
   const [newEmployee, setNewEmployee] = useState({
     name: '',

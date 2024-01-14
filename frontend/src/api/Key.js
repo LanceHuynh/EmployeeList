@@ -1,3 +1,3 @@
-const apiEndPoint = 'https://difficult-eel-lapel.cyclic.app/';
+const remoteEndPoint = 'https://difficult-eel-lapel.cyclic.app/';
 
- module.exports = { apiEndPoint };
+ module.exports = { remoteEndPoint };

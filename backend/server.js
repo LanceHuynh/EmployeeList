@@ -26,7 +26,9 @@ connection.once('open', () => {
 
 console.log('Middleware before routes');
 app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
+console.log("name below here")
 console.log(__dirname);
+console.log("name above here")
 console.log('API Routes');
 app.use('/employees', employeeRoutes);
 console.log('Catch-all route');
